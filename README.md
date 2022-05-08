@@ -1,4 +1,6 @@
 # BetterItemID
+[![](https://poggit.pmmp.io/shield.state/BetterItemID)](https://poggit.pmmp.io/p/BetterItemID)
+<a href="https://poggit.pmmp.io/p/BetterItemID"><img src="https://poggit.pmmp.io/shield.state/BetterItemID"></a>
 
 **The best ItemID for PocketMine-MP 4.0 servers. Special use for builders.**
 
