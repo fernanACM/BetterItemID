@@ -1,7 +1,8 @@
 # BetterItemID
 
 **The best ItemID for PocketMine-MP 4.0 servers. Special use for builders.**
-![icon-betteritemid](https://user-images.githubusercontent.com/83558341/167280782-a099e1f2-189f-4698-bf13-aaeb271c5375.png)
+
+![icon-betteritemid](https://user-images.githubusercontent.com/83558341/167280782-a099e1f2-189f-4698-bf13-aaeb271c5375.png) This plugin adds options to see the ID of the blocks in the game, you can customize their texts and sounds very easily through 'config.yml'. Page for the sounds of the game [sounds](https://www.digminecraft.com/lists/sound_list_pe.php)
 
 <a href="https://discord.gg/YyE9XFckqb"><img src="https://img.shields.io/discord/837701868649709568?label=discord&color=7289DA&logo=discord" alt="Discord" /></a>
 
