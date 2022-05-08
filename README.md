@@ -1,9 +1,7 @@
 # BetterItemID
 
 **The best ItemID for PocketMine-MP 4.0 servers. Special use for builders.**
-
-![Captura de pantalla 2022-05-07 182303](https://user-images.githubusercontent.com/83558341/167280615-ce3e29cd-42ab-44bc-ad30-4306bb07ee88.png)
-![Captura de pantalla 2022-05-07 182522](https://user-images.githubusercontent.com/83558341/167280617-a070b955-850c-4b0b-880b-440e30d6a4c7.png)
+![icon-betteritemid](https://user-images.githubusercontent.com/83558341/167280782-a099e1f2-189f-4698-bf13-aaeb271c5375.png)
 
 <a href="https://discord.gg/YyE9XFckqb"><img src="https://img.shields.io/discord/837701868649709568?label=discord&color=7289DA&logo=discord" alt="Discord" /></a>
 
@@ -43,7 +41,7 @@
     Tip-itemid: "§l§b»§r§f[§eITEM§f] §a{ID}§b:§a{META}§l§b«"
     # Use '{LINE}' like 'enter' and use '{NAME}' to see the player's name.
     Itemid: "§e=======(§bBetterItemID§e)======={LINE}§cHELLO: §f{NAME}{LINE}§aID: §b{ID}:{META}{LINE}§aBLOCK NAME: §b{BLOCK-NAME}{LINE}§e=========================="
-    ```
+  ```
 ### Commands
 /id - To see the ID of the item in hand.
 
