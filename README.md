@@ -12,7 +12,7 @@
 ### Implementations
 * Sounds.
 * Message customization.
-* Command [/id]
+* Command [/betteritemid, /itemid /id]
 ---
 
 ### Config
@@ -47,11 +47,11 @@
     Itemid: "§e=======(§bBetterItemID§e)======={LINE}§cHELLO: §f{NAME}{LINE}§aID: §b{ID}:{META}{LINE}§aBLOCK NAME: §b{BLOCK-NAME}{LINE}§e=========================="
   ```
 ### Commands
-/id - To see the ID of the item in hand.
+/betteritemid - To see the ID of the item in hand.
 
 ### Permissions
 
-- Executing the command: ```item.acm```
+- Executing the command: ```betteritemid.cmd.acm```
 
 ### Contact 
 
