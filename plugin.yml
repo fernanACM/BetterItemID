@@ -7,6 +7,6 @@ description: The best ItemID for PocketMine-MP 4.0 servers. Special use for buil
 website: https://github.com/fernanACM
 
 permissions:
-  item.acm:
+  betteritemid.cmd.acm:
     default: op
-    description: Use /id
+    description: Use /betteritemid
