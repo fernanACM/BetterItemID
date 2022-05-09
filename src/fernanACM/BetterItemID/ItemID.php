@@ -17,7 +17,7 @@ use pocketmine\permission\DefaultPermissions;
 use pocketmine\utils\Config;
 
 use fernanACM\BetterItemID\utils\PluginUtils;
-use fernanACM\BetterItemID\commands\IdCommand;
+use fernanACM\BetterItemID\commands\BetterItemIdCommand;
 
 class ItemID extends PluginBase implements Listener {
     
@@ -28,7 +28,7 @@ class ItemID extends PluginBase implements Listener {
 		$this->saveResource("config.yml");
 		$this->config = new Config($this->getDataFolder() . "config.yml");
         $this->getServer()->getPluginManager()->registerEvents($this ,$this);
-        $this->getServer()->getCommandMap()->register("id", new IdCommand($this));
+        $this->getServer()->getCommandMap()->register("betteritemid", new BetterItemIdCommand($this));
     }
         
     public function ItemHeld(PlayerItemHeldEvent $event){
