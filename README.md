@@ -5,17 +5,19 @@
 
 **The best ItemID for PocketMine-MP 4.0 servers. Special use for builders.**
 
-![icon-betteritemid](https://user-images.githubusercontent.com/83558341/167280782-a099e1f2-189f-4698-bf13-aaeb271c5375.png) This plugin adds options to see the ID of the blocks in the game, you can customize their texts and sounds very easily through 'config.yml'. Page for the sounds of the game [sounds](https://www.digminecraft.com/lists/sound_list_pe.php)
+![icon-betteritemid](https://user-images.githubusercontent.com/83558341/167280782-a099e1f2-189f-4698-bf13-aaeb271c5375.png) 
+
+This plugin adds options to see the ID of the blocks in the game, you can customize their texts and sounds very easily through 'config.yml'. Page for the sounds of the game [sounds](https://www.digminecraft.com/lists/sound_list_pe.php)
 
 <a href="https://discord.gg/YyE9XFckqb"><img src="https://img.shields.io/discord/837701868649709568?label=discord&color=7289DA&logo=discord" alt="Discord" /></a>
 
-### Implementations
+### 💡 Implementations
 * Sounds.
 * Message customization.
 * Command [/betteritemid, /itemid /id]
 ---
 
-### Config
+### 💾 Config
 ```yaml
    #   ____           _     _                   ___   _                        ___   ____  
    #  | __ )    ___  | |_  | |_    ___   _ __  |_ _| | |_    ___   _ __ ___   |_ _| |  _ \ 
@@ -46,14 +48,14 @@
     # Use '{LINE}' like 'enter' and use '{NAME}' to see the player's name.
     Itemid: "§e=======(§bBetterItemID§e)======={LINE}§cHELLO: §f{NAME}{LINE}§aID: §b{ID}:{META}{LINE}§aBLOCK NAME: §b{BLOCK-NAME}{LINE}§e=========================="
   ```
-### Commands
+### 🕹 Commands
 /betteritemid - To see the ID of the item in hand.
 
-### Permissions
+### 🔒 Permissions
 
 - Executing the command: ```betteritemid.cmd.acm```
 
-### Contact 
+### 📞 Contact 
 
 | Redes | Tag | Link |
 |-------|-------------|------|
@@ -62,3 +64,10 @@
 | GitHub | fernanACM | [GitHub](https://github.com/fernanACM)
 | Poggit | fernanACM | [Poggit](https://poggit.pmmp.io/ci/fernanACM)
 ****
+
+### ✔ Credits
+* **[Muqsit](https://github.com/Muqsit)**
+* **[SimplePacketHandler](https://github.com/Muqsit/SimplePacketHandler)**
+---
+* **[CortexPE](https://github.com/CortexPE)**
+* **[Commando](https://github.com/CortexPE/Commando/tree/master/)**
