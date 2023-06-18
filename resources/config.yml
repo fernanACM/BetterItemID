@@ -10,6 +10,8 @@
 # customize their texts and sounds very easily through 'config.yml'. 
 # Page for the sounds of the game: https://www.digminecraft.com/lists/sound_list_pe.php
 
+# DO NOT TOUCH!
+config-version: "1.0.0"
 # =======(SETTINGS)=======
 Settings:
   # Use "true" or "false" to enable/disable tip-id
@@ -23,6 +25,10 @@ Settings:
 # =======(MESSAGES)=======
 Messages:
   # Tip ID message
-  Tip-itemid: "§l§b»§r§f[§eITEM§f] §a{ID}§b:§a{META}§l§b«"
+  Tip-itemid: "&l&b»&r&f[&eITEM&f] §a{ID}&l&b«"
   # Use '{LINE}' like 'enter' and use '{NAME}' to see the player's name.
-  Itemid: "§e=======(§bBetterItemID§e)======={LINE}§cHELLO: §f{NAME}{LINE}§aID: §b{ID}:{META}{LINE}§aBLOCK NAME: §b{BLOCK-NAME}{LINE}§e=========================="
+  Itemid:
+    - "§e=======(§bBetterItemID§e)======="
+    - "§cHELLO: §f{NAME}"
+    - "§aID: §b{ID}"
+    - "§e=========================="

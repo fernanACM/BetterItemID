@@ -3,7 +3,7 @@
 
 [![](https://poggit.pmmp.io/shield.api/BetterItemID)](https://poggit.pmmp.io/p/BetterItemID)
 
-**The best ItemID for PocketMine-MP 4.0 servers. Special use for builders.**
+**The best ItemID for PocketMine-MP 5.0 servers. Special use for builders.**
 
 ![icon-betteritemid](https://user-images.githubusercontent.com/83558341/167280782-a099e1f2-189f-4698-bf13-aaeb271c5375.png) 
 
@@ -31,6 +31,8 @@ This plugin adds options to see the ID of the blocks in the game, you can custom
    # customize their texts and sounds very easily through 'config.yml'. 
    # Page for the sounds of the game: https://www.digminecraft.com/lists/sound_list_pe.php
 
+   # DO NOT TOUCH!
+   config-version: "1.0.0"
    # =======(SETTINGS)=======
    Settings:
     # Use "true" or "false" to enable/disable tip-id
@@ -44,9 +46,13 @@ This plugin adds options to see the ID of the blocks in the game, you can custom
    # =======(MESSAGES)=======
    Messages:
     # Tip ID message
-    Tip-itemid: "§l§b»§r§f[§eITEM§f] §a{ID}§b:§a{META}§l§b«"
+    Tip-itemid: "&l&b»&r&f[&eITEM&f] §a{ID}&l&b«"
     # Use '{LINE}' like 'enter' and use '{NAME}' to see the player's name.
-    Itemid: "§e=======(§bBetterItemID§e)======={LINE}§cHELLO: §f{NAME}{LINE}§aID: §b{ID}:{META}{LINE}§aBLOCK NAME: §b{BLOCK-NAME}{LINE}§e=========================="
+    Itemid:
+      - "§e=======(§bBetterItemID§e)======="
+      - "§cHELLO: §f{NAME}"
+      - "§aID: §b{ID}"
+      - "§e=========================="
   ```
 ### 🕹 Commands
 /betteritemid - To see the ID of the item in hand.
