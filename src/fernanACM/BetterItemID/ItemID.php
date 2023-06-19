@@ -110,7 +110,7 @@ class ItemID extends PluginBase implements Listener{
      * @return void
      */
     private function loadCommands(): void{
-        Server::getInstance()->getCommandMap()->register("enderchest", new BetterItemIdCommand);
+        Server::getInstance()->getCommandMap()->register("betteritemid", new BetterItemIdCommand);
     }
 
     /**
