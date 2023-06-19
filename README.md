@@ -72,8 +72,8 @@ This plugin adds options to see the ID of the blocks in the game, you can custom
 ****
 
 ### ✔ Credits
-* **[Muqsit](https://github.com/Muqsit)**
-* **[SimplePacketHandler](https://github.com/Muqsit/SimplePacketHandler)**
----
-* **[CortexPE](https://github.com/CortexPE)**
-* **[Commando](https://github.com/CortexPE/Commando/tree/master/)**
+| Authors | Github | Lib |
+|---------|--------|-----|
+| CortexPE | [CortexPE](https://github.com/CortexPE) | [Commando](https://github.com/CortexPE/Commando/tree/master/) |
+| Muqsit | [Muqsit](https://github.com/Muqsit) | [SimplePacketHandler](https://github.com/Muqsit/SimplePacketHandler) |
+| DaPigGuy | [DaPigGuy](https://github.com/DaPigGuy) | [libPiggyUpdateChecker](https://github.com/DaPigGuy/libPiggyUpdateChecker) |
