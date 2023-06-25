@@ -129,7 +129,7 @@ class ItemID extends PluginBase implements Listener{
         if($this->config->getNested("Settings.No-tip-itemid")){
             if($player->hasPermission(DefaultPermissions::ROOT_OPERATOR)){
                 $message = $this->getMessage($player, "Messages.Tip-itemid");
-                $player->sendTip(str_replace(["{ID}"], [$event->getItem()->getName()], $message));
+                $player->sendTip(str_replace(["{ID}"], [$event->getItem()->getVanillaName()], $message));
             }
         }
     }

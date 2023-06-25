@@ -32,6 +32,12 @@ class BetterItemIdCommand extends BaseCommand{
     protected function prepare(): void{
     }
 
+    /**
+     * @param CommandSender $sender
+     * @param string $aliasUsed
+     * @param array $args
+     * @return void
+     */
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void{
         if(!$sender instanceof Player) {
             $sender->sendMessage("Use this command in-game");
@@ -39,7 +45,7 @@ class BetterItemIdCommand extends BaseCommand{
         }
         $item = $sender->getInventory()->getItemInHand();
         $message = ItemID::getMessage($sender, "Messages.Itemid");
-        $message = str_replace(["{ID}"], [$item->getName()], $message);
+        $message = str_replace(["{ID}"], [$item->getVanillaName()], $message);
         if(ItemID::getInstance()->config->getNested("Settings.Id-no-sound")){
             PluginUtils::PlaySound($sender, ItemID::getInstance()->config->getNested("Settings.Id-sound"), 1, 3);
         }
