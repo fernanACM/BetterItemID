@@ -12,10 +12,10 @@ This plugin adds options to see the ID of the blocks in the game, you can custom
 <a href="https://discord.gg/YyE9XFckqb"><img src="https://img.shields.io/discord/837701868649709568?label=discord&color=7289DA&logo=discord" alt="Discord" /></a>
 
 ### 💡 Implementations
-[x] BlockInfo
-[X] Sounds
-[X] Message customization
-[X] Commands
+* [x] BlockInfo
+* [x] Sounds
+* [x] Message customization
+* [x] Commands
 ---
 
 ### 💾 Config
