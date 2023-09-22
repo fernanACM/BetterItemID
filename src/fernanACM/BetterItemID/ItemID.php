@@ -21,8 +21,11 @@ use pocketmine\utils\TextFormat;
 use pocketmine\event\Listener;
 
 use pocketmine\event\player\PlayerItemHeldEvent;
+use pocketmine\event\player\PlayerInteractEvent;
 
 use pocketmine\permission\DefaultPermissions;
+
+use pocketmine\item\StringToItemParser;
 # Libs
 use muqsit\simplepackethandler\SimplePacketHandler;
 
@@ -33,16 +36,20 @@ use CortexPE\Commando\BaseCommand;
 # My files
 use fernanACM\BetterItemID\utils\PluginUtils;
 use fernanACM\BetterItemID\commands\BetterItemIdCommand;
+use fernanACM\BetterItemID\utils\BlockInfoUtils;
 
 class ItemID extends PluginBase implements Listener{
     
     /** @var Config $config */
     public Config $config;
 
+    /** @var array $cooldown */
+    private static array $cooldown = [];
+
     /** @var ItemID $instance */
     private static ItemID $instance;
     # CheckConfig
-    public const CONFIG_VERSION = "1.0.0";
+    public const CONFIG_VERSION = "2.0.0";
     
     /**
      * @return void
@@ -124,24 +131,46 @@ class ItemID extends PluginBase implements Listener{
      * @param PlayerItemHeldEvent $event
      * @return void
      */
-    public function ItemHeld(PlayerItemHeldEvent $event): void{
+    public function onItemHeld(PlayerItemHeldEvent $event): void{
         $player = $event->getPlayer();
         if($this->config->getNested("Settings.No-tip-itemid")){
             if($player->hasPermission(DefaultPermissions::ROOT_OPERATOR)){
-                $message = $this->getMessage($player, "Messages.Tip-itemid");
-                $player->sendTip(str_replace(["{ID}"], [$event->getItem()->getVanillaName()], $message));
+                $message = self::getMessage($player, "Messages.Tip-itemid");
+                /** @var StringToItemParser $stringToItem */
+                $stringToItem = StringToItemParser::getInstance();
+                $id = $stringToItem->lookupAliases($event->getItem())[0];
+                $player->sendActionBarMessage(str_replace(["{ID}"], [$id], $message));
             }
         }
     }
 
     /**
-     * @return ItemID
+     * @param PlayerInteractEvent $event
+     * @return void
      */
-    public static function getInstance(): ItemID{
-        return self::$instance;
+    public function onInteractBlock(PlayerInteractEvent $event): void{
+        $player = $event->getPlayer();
+        $action = $event->getAction();
+        $block = $event->getBlock();
+        if($player->getInventory()->getItemInHand()->equals(BlockInfoUtils::getBlockInfo()) && 
+            $action === PlayerInteractEvent::RIGHT_CLICK_BLOCK){
+            if((self::$cooldown[$player->getName()] ?? .0) < microtime(true)){
+                self::$cooldown[$player->getName()] = microtime(true) + 0.2;
+            }else return;
+            $message = self::getMessage($player, "Messages.block-info");
+            /** @var StringToItemParser $stringToItem */
+            $stringToItem = StringToItemParser::getInstance();
+            $id = $stringToItem->lookupBlockAliases($block)[0];
+            if($player->hasPermission("betteritemid.use.acm")){
+                if(ItemID::getInstance()->config->getNested("Settings.Id-no-sound")){
+                    PluginUtils::PlaySound($player, ItemID::getInstance()->config->getNested("Settings.Id-sound"), 1, 3);
+                }
+                $player->sendMessage(self::Prefix(). str_replace(["{ID}"], [$id], $message));
+            }
+        }
     }
-    
-     /**
+
+    /**
      * @param Player $player
      * @param string $key
      * @return string
@@ -153,6 +182,13 @@ class ItemID extends PluginBase implements Listener{
         }
         $message = implode("\n", $messageArray);
         return PluginUtils::codeUtil($player, $message);
+    }
+
+    /**
+     * @return ItemID
+     */
+    public static function getInstance(): ItemID{
+        return self::$instance;
     }
 
     /**

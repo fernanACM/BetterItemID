@@ -13,11 +13,15 @@ namespace fernanACM\BetterItemID\commands;
 use pocketmine\player\Player;
 
 use pocketmine\command\CommandSender;
+
+use pocketmine\item\StringToItemParser;
+
 # Lib - Commando
 use CortexPE\Commando\BaseCommand;
 # My files
 use fernanACM\BetterItemID\ItemID;
 use fernanACM\BetterItemID\utils\PluginUtils;
+use fernanACM\BetterItemID\commands\subcommands\BlockInfoSubCommand;
 
 class BetterItemIdCommand extends BaseCommand{
 
@@ -30,6 +34,7 @@ class BetterItemIdCommand extends BaseCommand{
      * @return void
      */
     protected function prepare(): void{
+        $this->registerSubCommand(new BlockInfoSubCommand);
     }
 
     /**
@@ -45,7 +50,10 @@ class BetterItemIdCommand extends BaseCommand{
         }
         $item = $sender->getInventory()->getItemInHand();
         $message = ItemID::getMessage($sender, "Messages.Itemid");
-        $message = str_replace(["{ID}"], [$item->getVanillaName()], $message);
+        /** @var StringToItemParser $stringToItem */
+        $stringToItem = StringToItemParser::getInstance();
+        $id = $stringToItem->lookupAliases($item)[0];
+        $message = str_replace(["{ID}"], [$id], $message);
         if(ItemID::getInstance()->config->getNested("Settings.Id-no-sound")){
             PluginUtils::PlaySound($sender, ItemID::getInstance()->config->getNested("Settings.Id-sound"), 1, 3);
         }

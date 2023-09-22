@@ -12,9 +12,10 @@ This plugin adds options to see the ID of the blocks in the game, you can custom
 <a href="https://discord.gg/YyE9XFckqb"><img src="https://img.shields.io/discord/837701868649709568?label=discord&color=7289DA&logo=discord" alt="Discord" /></a>
 
 ### 💡 Implementations
-* Sounds.
-* Message customization.
-* Command [/betteritemid, /itemid /id]
+[x] BlockInfo
+[X] Sounds
+[X] Message customization
+[X] Commands
 ---
 
 ### 💾 Config
@@ -26,13 +27,13 @@ This plugin adds options to see the ID of the blocks in the game, you can custom
    #  |____/   \___|  \__|  \__|  \___| |_|    |___|  \__|  \___| |_| |_| |_| |___| |____/ 
    #         by fernanACM
 
-   # The best ItemID for PocketMine-MP 4.0 servers. Special use for builders.
+   # The best ItemID for PocketMine-MP 5.0 servers. Special use for builders.
    # This plugin adds options to see the ID of the blocks in the game, you can 
    # customize their texts and sounds very easily through 'config.yml'. 
    # Page for the sounds of the game: https://www.digminecraft.com/lists/sound_list_pe.php
 
    # DO NOT TOUCH!
-   config-version: "1.0.0"
+   config-version: "2.0.0"
    # =======(SETTINGS)=======
    Settings:
     # Use "true" or "false" to enable/disable tip-id
@@ -53,13 +54,24 @@ This plugin adds options to see the ID of the blocks in the game, you can custom
       - "§cHELLO: §f{NAME}"
       - "§aID: §b{ID}"
       - "§e=========================="
+    # Block info message
+    block-info: "&e{ID}"
   ```
+
 ### 🕹 Commands
-/betteritemid - To see the ID of the item in hand.
+| Command | Description |
+|---------|-------------|
+| ```/betteritemid``` | To see the ID of the item in hand |
+| ```/betteritemid blockinfo``` | Use blockinfo |
 
 ### 🔒 Permissions
+| Permission | Description |
+|---------|-------------|
+| ```betteritemid.cmd.acm``` | Executing the command |
+| ```betteritemid.use.acm``` | Use blockinfo |
 
-- Executing the command: ```betteritemid.cmd.acm```
+### 📢 Report bug
+* If you find any bugs in this plugin, please let me know via: [issues](https://github.com/fernanACM/BetterItemId/issues)
 
 ### 📞 Contact 
 

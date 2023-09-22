@@ -5,13 +5,15 @@
 #  |____/   \___|  \__|  \__|  \___| |_|    |___|  \__|  \___| |_| |_| |_| |___| |____/ 
 #         by fernanACM
 
-# The best ItemID for PocketMine-MP 4.0 servers. Special use for builders.
+# The best ItemID for PocketMine-MP 5.0 servers. Special use for builders.
 # This plugin adds options to see the ID of the blocks in the game, you can 
 # customize their texts and sounds very easily through 'config.yml'. 
 # Page for the sounds of the game: https://www.digminecraft.com/lists/sound_list_pe.php
 
 # DO NOT TOUCH!
-config-version: "1.0.0"
+config-version: "2.0.0"
+# Plugin prefix
+Prefix: "&l&f[&bBetterItemId&f]&8»&r "
 # =======(SETTINGS)=======
 Settings:
   # Use "true" or "false" to enable/disable tip-id
@@ -32,3 +34,5 @@ Messages:
     - "§cHELLO: §f{NAME}"
     - "§aID: §b{ID}"
     - "§e=========================="
+  # Block info message
+  block-info: "&e{ID}"
