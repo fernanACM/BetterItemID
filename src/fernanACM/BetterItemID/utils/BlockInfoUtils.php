@@ -21,7 +21,7 @@ use pocketmine\item\enchantment\VanillaEnchantments;
 
 use pocketmine\nbt\tag\CompoundTag;
 
-class BlockInfoUtils{
+final class BlockInfoUtils{
 
     public const TAG_BLOCK_INFO = "BlockInfoACM";
     public const TAG_BETTER_ITEM_ID = "BetterItemId";

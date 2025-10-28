@@ -20,7 +20,7 @@ use pocketmine\network\mcpe\NetworkBroadcastUtils;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 use pocketmine\network\mcpe\protocol\OnScreenTextureAnimationPacket;
 
-class PluginUtils{
+final class PluginUtils{
 
     /**
      * @param Player $player
@@ -29,7 +29,7 @@ class PluginUtils{
      * @param float $pitch
      * @return void
      */
-	public static function PlaySound(Player $player, string $sound, int $volume, float $pitch){
+	public static function PlaySound(Player $player, string $sound, int $volume = 1, float $pitch = 1.0): void{
 		$packet = new PlaySoundPacket();
 		$packet->x = $player->getPosition()->getX();
 		$packet->y = $player->getPosition()->getY();
@@ -47,7 +47,7 @@ class PluginUtils{
      * @param float $pitch
      * @return void
      */
-    public static function BroadSound(Player $player, string $soundName, int $volume, float $pitch){
+    public static function BroadSound(Player $player, string $soundName, int $volume = 1, float $pitch = 1.0): void{
         $packet = new PlaySoundPacket();
         $packet->soundName = $soundName;
         $position = $player->getPosition();
@@ -106,7 +106,7 @@ class PluginUtils{
      * @param int $effectId
      * @return void
      */
-    public static function AminationTexture(Player $player, int $effectId){
+    public static function AminationTexture(Player $player, int $effectId): void{
         $packet = new OnScreenTextureAnimationPacket();
         $packet->effectId = $effectId;
         $player->getNetworkSession()->sendDataPacket($packet);

@@ -7,6 +7,8 @@
 #  /_/   \_\  \____| |_|  |_|
 # The creator of this plugin was fernanACM.
 # https://github.com/fernanACM
+
+declare(strict_types=1);
  
 namespace fernanACM\BetterItemID\commands\subcommands;
 
@@ -47,7 +49,7 @@ class BlockInfoSubCommand extends BaseSubCommand{
             return;
         }
         $sender->getInventory()->addItem(BlockInfoUtils::getBlockInfo());
-        $sender->sendMessage(ItemID::Prefix(). TextFormat::colorize("&aYou received the &eBlockInfo&a in your inventory!"));
+        $sender->sendMessage(ItemID::getPrefix(). TextFormat::colorize("&aYou received the &eBlockInfo&a in your inventory!"));
         PluginUtils::PlaySound($sender, "random.pop2", 1, 3.5);
     }
 }

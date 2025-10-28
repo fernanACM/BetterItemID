@@ -7,6 +7,8 @@
 #  /_/   \_\  \____| |_|  |_|
 # The creator of this plugin was fernanACM.
 # https://github.com/fernanACM
+
+declare(strict_types=1);
  
 namespace fernanACM\BetterItemID;
 
@@ -17,6 +19,7 @@ use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
+use pocketmine\utils\SingletonTrait;
 
 use pocketmine\event\Listener;
 
@@ -39,15 +42,17 @@ use fernanACM\BetterItemID\commands\BetterItemIdCommand;
 use fernanACM\BetterItemID\utils\BlockInfoUtils;
 
 class ItemID extends PluginBase implements Listener{
+    use singletonTrait{
+        setInstance as protected;
+        reset as protected;
+    }
     
     /** @var Config $config */
     public Config $config;
 
     /** @var array $cooldown */
-    private static array $cooldown = [];
+    protected static array $cooldown = [];
 
-    /** @var ItemID $instance */
-    private static ItemID $instance;
     # CheckConfig
     public const CONFIG_VERSION = "2.0.0";
     
@@ -55,7 +60,7 @@ class ItemID extends PluginBase implements Listener{
      * @return void
      */
     public function onLoad(): void{
-        self::$instance = $this;
+        self::setInstance($this);
         $this->loadFiles();
     }
 
@@ -72,7 +77,7 @@ class ItemID extends PluginBase implements Listener{
     /**
      * @return void
      */
-    private function loadFiles(): void{
+    protected function loadFiles(): void{
         $this->saveResource("config.yml");
 	    $this->config = new Config($this->getDataFolder() . "config.yml");
     }
@@ -80,7 +85,7 @@ class ItemID extends PluginBase implements Listener{
     /**
      * @return void
      */
-    private function loadCheck(){
+    protected function loadCheck(){
         # CONFIG
         if((!$this->config->exists("config-version")) || ($this->config->get("config-version") != self::CONFIG_VERSION)){
             rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "config_old.yml");
@@ -93,7 +98,7 @@ class ItemID extends PluginBase implements Listener{
     /**
      * @return void
      */
-    private function loadVirions(): void{
+    protected function loadVirions(): void{
         foreach([
             "SimplePacketHandler" => SimplePacketHandler::class,
             "Commando" => BaseCommand::class,
@@ -116,14 +121,14 @@ class ItemID extends PluginBase implements Listener{
     /**
      * @return void
      */
-    private function loadCommands(): void{
+    protected function loadCommands(): void{
         Server::getInstance()->getCommandMap()->register("betteritemid", new BetterItemIdCommand);
     }
 
     /**
      * @return void
      */
-    private function loadEvents(): void{
+    protected function loadEvents(): void{
         Server::getInstance()->getPluginManager()->registerEvents($this, $this);
     }
     
@@ -136,9 +141,7 @@ class ItemID extends PluginBase implements Listener{
         if($this->config->getNested("Settings.No-tip-itemid")){
             if($player->hasPermission(DefaultPermissions::ROOT_OPERATOR)){
                 $message = self::getMessage($player, "Messages.Tip-itemid");
-                /** @var StringToItemParser $stringToItem */
-                $stringToItem = StringToItemParser::getInstance();
-                $id = $stringToItem->lookupAliases($event->getItem())[0];
+                $id = StringToItemParser::getInstance()->lookupAliases($event->getItem())[0] ?? $event->getItem()->getName();
                 $player->sendActionBarMessage(str_replace(["{ID}"], [$id], $message));
             }
         }
@@ -158,14 +161,13 @@ class ItemID extends PluginBase implements Listener{
                 self::$cooldown[$player->getName()] = microtime(true) + 0.2;
             }else return;
             $message = self::getMessage($player, "Messages.block-info");
-            /** @var StringToItemParser $stringToItem */
             $stringToItem = StringToItemParser::getInstance();
-            $id = $stringToItem->lookupBlockAliases($block)[0];
+            $id = $stringToItem->lookupBlockAliases($block)[0] ?? $block->getName();
             if($player->hasPermission("betteritemid.use.acm")){
                 if(ItemID::getInstance()->config->getNested("Settings.Id-no-sound")){
                     PluginUtils::PlaySound($player, ItemID::getInstance()->config->getNested("Settings.Id-sound"), 1, 3);
                 }
-                $player->sendMessage(self::Prefix(). str_replace(["{ID}"], [$id], $message));
+                $player->sendMessage(self::getPrefix(). str_replace(["{ID}"], [$id], $message));
             }
         }
     }
@@ -185,16 +187,9 @@ class ItemID extends PluginBase implements Listener{
     }
 
     /**
-     * @return ItemID
-     */
-    public static function getInstance(): ItemID{
-        return self::$instance;
-    }
-
-    /**
      * @return string
      */
-    public static function Prefix(): string{
+    public static function getPrefix(): string{
         return TextFormat::colorize(self::$instance->config->get("Prefix"));
     }
 }
