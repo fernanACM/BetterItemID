@@ -1,7 +1,7 @@
 name: BetterItemID
 main: fernanACM\BetterItemID\ItemID
-version: 3.0.0
-api: 5.3.0
+version: 3.1.0
+api: 5.36.0
 author: fernanACM
 description: The best ItemID for PocketMine-MP 5.0 servers. Special use for builders.
 website: https://github.com/fernanACM
